@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+<a href="{{ url_for('logout') }}">Logout</a>
+<h2>Sentences</h2>
+<form method="post" action="/add_sentence">
+    <input type="text" name="text">
+    <input type="text" name="translation">
+    <button type="submit">Add sentence</button>
+</form>
+
+<h3>Sentences list</h3>
+{% for sentence in sentences %}
+<div>{{ sentence.text }}&nbsp;
+    {% for translation in sentence.translations %}
+        <b>{{ translation.text }}</b>
+    {% endfor %}
+</div>
+{% endfor %}
+
+</body>
+</html>
